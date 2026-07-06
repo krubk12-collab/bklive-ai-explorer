@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>นักสำรวจ AI พิชิตภารกิจ | ม.1/1 เทคโนโลยีปัญญาประดิษฐ์</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&family=Kanit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a2540;--blue:#1565c0;--blue2:#2196f3;--sky:#4fc3f7;--teal:#00897b;
+  --gold:#f5a623;--gold2:#ffca42;
+  --card:#ffffff;--card2:#f0f7ff;--bg1:#e8f4fd;--bg2:#dcecfb;
+  --text:#0d1b2a;--text-dim:#3d5570;--muted:#7891a8;--border:#c7dcef;
+  --success:#2e8b57;--danger:#d84343;
+  --shadow:0 2px 16px rgba(10,37,64,0.10);--radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Sarabun',sans-serif;color:var(--text);min-height:100vh;
+  background:linear-gradient(160deg,var(--bg1) 0%,var(--bg2) 50%,#eef8ff 100%);
+  background-attachment:fixed;
+}
+header{
+  background:linear-gradient(180deg,var(--navy),#0d3a63);color:#fff;position:sticky;top:0;z-index:100;
+  border-bottom:3px solid var(--gold);box-shadow:0 4px 20px rgba(10,37,64,.3);
+}
+.header-inner{max-width:1000px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.logo{font-family:'Kanit',sans-serif;font-weight:800;font-size:1.15rem;display:flex;align-items:center;gap:8px;color:var(--gold2)}
+.nav-pills{display:flex;gap:4px;flex-wrap:wrap}
+.nav-pill{padding:6px 13px;border-radius:20px;font-size:.8rem;font-weight:700;cursor:pointer;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);transition:.2s;font-family:'Sarabun',sans-serif}
+.nav-pill:hover{background:rgba(255,255,255,.18);color:#fff}
+.nav-pill.active{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);font-weight:800;border-color:transparent}
+main{max-width:1000px;margin:0 auto;padding:22px 18px 60px}
+.section{display:none}.section.active{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy),var(--blue));border:3px solid var(--gold);border-radius:var(--radius);color:#fff;padding:40px 32px;margin-bottom:22px;position:relative;overflow:hidden;box-shadow:0 0 40px rgba(21,101,192,.2)}
+.hero::before{content:'';position:absolute;top:-30px;right:-30px;width:220px;height:220px;background:radial-gradient(circle,rgba(255,202,66,.18),transparent 65%);border-radius:50%}
+.hero *{color:#fff!important}
+.hero h1{font-family:'Kanit',sans-serif;font-size:1.9rem;font-weight:900;margin-bottom:12px;line-height:1.3}
+.hero h1 span{background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{max-width:520px;font-size:.95rem;line-height:1.7;opacity:.92;margin-bottom:22px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,166,35,.2);border:1px solid rgba(245,166,35,.5);color:var(--gold2)!important;padding:5px 15px;border-radius:20px;font-size:.75rem;font-weight:700;margin-bottom:16px;text-transform:uppercase;letter-spacing:.5px}
+.hero-steps{display:flex;gap:8px;flex-wrap:wrap}
+.hero-step{background:rgba(255,255,255,.1);border:1px solid rgba(245,166,35,.3);border-radius:10px;padding:8px 14px;font-size:.78rem;display:flex;align-items:center;gap:6px}
+.hero-step-num{width:20px;height:20px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:800;color:var(--navy)!important;flex-shrink:0}
+
+/* CARDS */
+.card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px;margin-bottom:20px}
+.entry-card{max-width:460px;margin:0 auto 20px}
+.entry-card h2{font-family:'Kanit',sans-serif;font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.entry-card p{color:var(--text-dim);font-size:.88rem;margin-bottom:20px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:.85rem;font-weight:700;color:var(--text-dim);margin-bottom:5px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 13px;border:2px solid var(--border);border-radius:10px;font-size:.92rem;font-family:'Sarabun',sans-serif;background:var(--card2);color:var(--text);transition:.2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(21,101,192,.15)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:11px 22px;border-radius:12px;font-size:.9rem;font-weight:700;font-family:'Sarabun',sans-serif;cursor:pointer;border:none;transition:.2s}
+.btn-primary{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;width:100%;border:2px solid var(--gold)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(10,37,64,.3)}
+.btn-secondary{background:linear-gradient(135deg,var(--blue),var(--sky));color:#fff}
+.btn-secondary:hover{box-shadow:0 4px 14px rgba(21,101,192,.3)}
+.btn-outline{background:transparent;color:var(--text);border:2px solid var(--border)}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#d68910);color:#fff}
+.btn-gold:hover{box-shadow:0 4px 14px rgba(245,166,35,.4)}
+.btn-teal{background:linear-gradient(135deg,var(--teal),#00695c);color:#fff}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+
+/* SECTION TIMER */
+.timer-bar{display:flex;align-items:center;gap:14px;background:linear-gradient(90deg,var(--blue),var(--teal));border-radius:20px;padding:12px 20px;margin-bottom:20px;box-shadow:0 4px 16px rgba(21,101,192,.25);border:1px solid rgba(245,166,35,.3)}
+.timer-bar.urgent{background:linear-gradient(90deg,#c0392b,#e74c3c)}
+.timer-bar.done{background:linear-gradient(90deg,var(--success),#3cb371)}
+.tb-emoji{font-size:1.8rem;flex:0 0 auto}
+.tb-wrap{flex:1;min-width:0}
+.tb-label{font-size:.8rem;font-weight:700;color:rgba(255,255,255,.92);margin-bottom:4px}
+.tb-prog{height:6px;background:rgba(255,255,255,.3);border-radius:3px;overflow:hidden}
+.tb-fill{height:100%;background:#fff;border-radius:3px;transition:width 1s linear}
+.tb-clock{font-family:'Courier New',monospace;font-size:1.8rem;font-weight:900;color:#fff;min-width:78px;text-align:right;flex:0 0 auto}
+
+/* STEP HEADER */
+.step-header{border-radius:var(--radius);padding:18px 22px;display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;color:#fff;border:1px solid rgba(245,166,35,.3)}
+.step-header *{color:#fff!important}
+.step-header h2{font-family:'Kanit',sans-serif;font-size:1.15rem;font-weight:800;margin-bottom:4px}
+.step-header p{font-size:.85rem;opacity:.92;line-height:1.55}
+.step-header-icon{font-size:1.8rem;flex-shrink:0}
+.h-blue{background:linear-gradient(135deg,var(--navy),var(--blue))}
+.h-teal{background:linear-gradient(135deg,#00695c,var(--teal))}
+.h-gold{background:linear-gradient(135deg,#8a5a00,var(--gold))}
+.h-purple{background:linear-gradient(135deg,#4527a0,#7b52c7)}
+
+/* QUICK-FILL EXAMPLES */
+details.ex-box{background:var(--card2);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px}
+details.ex-box summary{padding:11px 15px;font-size:.85rem;font-weight:700;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;color:var(--navy)}
+details.ex-box summary::after{content:'▾';margin-left:auto;color:var(--muted)}
+.ex-list{padding:4px 12px 12px;display:grid;gap:6px}
+.ex-item{padding:8px 12px;background:var(--card);border:1px solid var(--border);border-radius:8px;font-size:.85rem;cursor:pointer;transition:.15s;line-height:1.6}
+.ex-item:hover{border-color:var(--gold);background:#fffaf0}
+
+textarea.wide{width:100%;padding:11px 14px;border:2px solid var(--border);border-radius:10px;font-family:'Sarabun',sans-serif;font-size:.9rem;resize:vertical;background:var(--card2);color:var(--text)}
+textarea.wide:focus{outline:none;border-color:var(--blue)}
+.field-label{display:block;font-size:.85rem;font-weight:700;color:var(--navy);margin-bottom:7px}
+
+/* AI TOOLS */
+.ai-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+.ai-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:16px;text-align:center}
+.ai-card .ai-icon{font-size:2rem;margin-bottom:6px}
+.ai-card .ai-name{font-weight:800;font-family:'Kanit',sans-serif;color:var(--navy);margin-bottom:2px}
+.ai-card .ai-by{font-size:.72rem;color:var(--muted);margin-bottom:10px}
+.ai-card button{font-size:.78rem;background:var(--navy);color:#fff;border:none;border-radius:8px;padding:6px 10px;cursor:pointer;width:100%;margin-bottom:6px;font-family:'Sarabun',sans-serif}
+.ai-card a{font-size:.78rem;background:var(--card2);color:var(--text);border-radius:8px;padding:6px 10px;text-decoration:none;display:block}
+
+.prompt-box{background:linear-gradient(135deg,rgba(21,101,192,.06),rgba(0,137,123,.06));border:2px dashed var(--blue);border-radius:14px;padding:16px 18px;margin-bottom:16px}
+.prompt-box .pb-title{font-size:.8rem;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.prompt-sample{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:.85rem;color:var(--text-dim);margin-bottom:8px;font-style:italic;line-height:1.6}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(10,37,64,.6);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(3px)}
+.modal-box{background:var(--card);border-radius:20px;max-width:480px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3);border:2px solid var(--border)}
+.modal-head{background:var(--card2);padding:18px 22px 14px;border-bottom:2px solid var(--border)}
+.modal-body{padding:16px 22px}
+.modal-foot{padding:14px 22px 20px;display:flex;gap:10px}
+.step-item{font-size:.86rem;color:var(--text);padding:7px 10px;margin-bottom:6px;background:var(--card2);border-radius:8px;border-left:3px solid var(--blue)}
+
+/* PROGRESS/BADGE */
+.progress-banner{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:11px 18px;margin-bottom:18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.xp-bar-wrap{flex:1;min-width:150px;height:8px;background:rgba(0,0,0,.08);border-radius:4px;overflow:hidden}
+.xp-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .5s}
+
+/* SUMMARY / PRINT */
+.summary-card{background:var(--card);border:2px solid var(--gold);border-radius:var(--radius);padding:22px;margin-bottom:18px}
+.summary-row{margin-bottom:12px;padding-bottom:12px;border-bottom:1px dashed var(--border)}
+.summary-row:last-child{border-bottom:none}
+.summary-row .sr-label{font-size:.75rem;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.summary-row .sr-val{font-size:.92rem;color:var(--text)}
+.checklist-item{display:flex;align-items:flex-start;gap:8px;font-size:.87rem;padding:6px 0;color:var(--text)}
+.toast{position:fixed;bottom:22px;right:22px;background:var(--navy);color:#fff;padding:11px 18px;border-radius:12px;font-size:.86rem;font-weight:600;box-shadow:0 8px 26px rgba(10,37,64,.3);z-index:999;transform:translateY(100px);opacity:0;transition:.3s;border:1px solid var(--gold)}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.success{background:#1a5c35}
+
+.section-title{font-family:'Kanit',sans-serif;font-size:1.25rem;font-weight:800;color:var(--navy);margin-bottom:5px}
+.section-sub{color:var(--text-dim);font-size:.86rem;margin-bottom:18px}
+
+footer{background:linear-gradient(180deg,#0d3a63,var(--navy));color:#ccc;text-align:center;padding:26px 20px;font-size:.8rem;line-height:1.7;border-top:3px solid var(--gold)}
+footer strong{color:var(--gold2)}
+
+@media print{
+  header,.timer-bar,.nav-pills,.btn,footer,.no-print{display:none!important}
+  body{background:#fff}
+  .section{display:none!important}
+  .section.print-active{display:block!important}
+  .card,.summary-card{box-shadow:none;border:1px solid #ccc}
+}
+
+@media(max-width:640px){
+  .hero{padding:26px 18px}.hero h1{font-size:1.4rem}
+  .ai-grid{grid-template-columns:1fr}
+  .nav-pills{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nav-pills::-webkit-scrollbar{display:none}
+  .nav-pill{white-space:nowrap;flex-shrink:0}
+  .header-inner{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="logo">🧭 นักสำรวจ AI พิชิตภารกิจ</div>
+    <nav class="nav-pills">
+      <button class="nav-pill active" onclick="goSection('home')">🏠 หน้าหลัก</button>
+      <button class="nav-pill" onclick="goSection('problem')">🔍 ปัญหาใกล้ตัว</button>
+      <button class="nav-pill" onclick="goSection('cause')">🤖 ถาม AI หาสาเหตุ</button>
+      <button class="nav-pill" onclick="goSection('build')">🛠️ สร้างผลงาน</button>
+      <button class="nav-pill" onclick="goSection('present')">🎤 นำเสนอ</button>
+      <button class="nav-pill" onclick="goSection('summary')">📋 สรุปผลงาน</button>
+    </nav>
+  </div>
+</header>
+<main>
+
+<div class="progress-banner" id="progress-banner" style="display:none">
+  <span style="font-size:.8rem;color:var(--muted)">⚡ ความคืบหน้า</span>
+  <div class="xp-bar-wrap"><div class="xp-bar-fill" id="xp-fill" style="width:0%"></div></div>
+  <span id="xp-label" style="font-size:.85rem;font-weight:800;color:var(--gold)">0/5 ขั้นตอน 🔰</span>
+</div>
+
+<!-- HOME -->
+<section class="section active" id="section-home">
+  <div class="hero">
+    <div class="hero-badge">🧭 ภารกิจ AI ม.1 | เวลา 2 คาบ (100 นาที)</div>
+    <h1>ใช้ <span>AI</span> เป็นเพื่อนร่วมคิด<br>แก้ปัญหาใกล้ตัวแบบนักสำรวจ!</h1>
+    <p>เธอคือ <strong>นักสำรวจ AI</strong> รุ่นใหม่ — เลือกปัญหาที่เจอในชีวิตประจำวัน ใช้ AI ช่วยหาสาเหตุและไอเดียแก้ปัญหา แล้วลงมือสร้างผลงานจริงมานำเสนอให้เพื่อนดู!</p>
+    <div class="hero-steps">
+      <div class="hero-step"><span class="hero-step-num">1</span> 🔍 หาปัญหา</div>
+      <div class="hero-step"><span class="hero-step-num">2</span> 🤖 ถาม AI</div>
+      <div class="hero-step"><span class="hero-step-num">3</span> 🛠️ สร้างผลงาน</div>
+      <div class="hero-step"><span class="hero-step-num">4</span> 🎤 นำเสนอ</div>
+    </div>
+  </div>
+
+  <div class="card entry-card">
+    <h2>🚀 เริ่มภารกิจ</h2>
+    <p>กรอกชื่อและเลือกกลุ่มของเธอ แล้วออกเดินทางได้เลย!</p>
+    <div class="form-group"><label>ชื่อ-นามสกุล</label><input type="text" id="s-name" placeholder="เช่น เด็กชายสมชาย ใจดี"></div>
+    <div class="form-group"><label>กลุ่มที่</label>
+      <select id="s-group">
+        <option value="">-- เลือกกลุ่ม --</option>
+        <option value="1">กลุ่ม 1</option><option value="2">กลุ่ม 2</option><option value="3">กลุ่ม 3</option>
+        <option value="4">กลุ่ม 4</option><option value="5">กลุ่ม 5</option><option value="6">กลุ่ม 6</option>
+        <option value="7">กลุ่ม 7</option><option value="8">กลุ่ม 8</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" onclick="startMission()">🧭 ออกเดินทางสำรวจ!</button>
+  </div>
+
+  <div class="card" style="max-width:460px;margin:0 auto">
+    <h3 style="font-family:'Kanit',sans-serif;font-size:1rem;color:var(--navy);margin-bottom:8px">📖 วิธีเล่น (บอกครูก่อนเริ่ม)</h3>
+    <ol style="padding-left:18px;font-size:.85rem;line-height:1.9;color:var(--text-dim)">
+      <li><strong>🔍 ปัญหาใกล้ตัว</strong> (10 นาที) — เลือกปัญหาที่เจอจริงในชีวิตนักเรียน ม.1</li>
+      <li><strong>🤖 ถาม AI หาสาเหตุ</strong> (25 นาที) — ลองใช้ AI แล้วถามหาสาเหตุของปัญหา</li>
+      <li><strong>🛠️ สร้างผลงาน</strong> (35 นาที) — ใช้ AI ช่วยสร้างชิ้นงานแก้ปัญหา</li>
+      <li><strong>🎤 นำเสนอ</strong> (10 นาที) — นำเสนอผลงานให้เพื่อนฟัง 1 นาที/กลุ่ม</li>
+    </ol>
+  </div>
+</section>
+
+<!-- STEP 1: PROBLEM (Engagement) -->
+<section class="section" id="section-problem">
+  <div class="timer-bar" id="tb-problem" data-total="600" data-remain="600"><span class="tb-emoji">🔍</span><div class="tb-wrap"><div class="tb-label">ขั้นที่ 1 — ปัญหาใกล้ตัว (10 นาที)</div><div class="tb-prog"><div class="tb-fill" id="tbf-problem" style="width:100%"></div></div></div><div class="tb-clock" id="tbc-problem">10:00</div></div>
+  <div class="step-header h-blue"><div class="step-header-icon">🔍</div><div><h2>ขั้นที่ 1 — ค้นหาปัญหาใกล้ตัว</h2><p>เลือกปัญหาที่นักเรียน ม.1 เจอจริงในชีวิตประจำวัน 1 เรื่อง แล้วอธิบายว่ากระทบชีวิตอย่างไร</p></div></div>
+
+  <div class="card">
+    <details class="ex-box">
+      <summary>😕 ตัวอย่างปัญหาใกล้ตัว ม.1 — คลิกดู (คลิกเลือกเพื่อเติมอัตโนมัติ)</summary>
+      <div class="ex-list">
+        <div class="ex-item" onclick="fillField('p-problem',this)">① ลืมทำการบ้านบ่อยๆ จนโดนครูตักเตือน</div>
+        <div class="ex-item" onclick="fillField('p-problem',this)">② จัดตารางเวลาไม่ทัน อ่านหนังสือไม่ทันก่อนสอบ</div>
+        <div class="ex-item" onclick="fillField('p-problem',this)">③ หาข้อมูลทำรายงาน/การบ้านไม่เจอ ไม่รู้จะเริ่มตรงไหน</div>
+        <div class="ex-item" onclick="fillField('p-problem',this)">④ ขยะในห้องเรียนเยอะ ไม่มีใครช่วยกันแยก</div>
+        <div class="ex-item" onclick="fillField('p-problem',this)">⑤ เล่นมือถือนานจนไม่มีเวลาทบทวนบทเรียน</div>
+        <div class="ex-item" onclick="fillField('p-problem',this)">⑥ ตื่นสาย มาโรงเรียนไม่ทันบ่อยๆ</div>
+        <div class="ex-item" onclick="fillField('p-problem',this)">⑦ จำคำศัพท์ภาษาอังกฤษไม่ได้ ท่องแล้วลืม</div>
+        <div class="ex-item" onclick="fillField('p-problem',this)">⑧ ของใช้ส่วนตัวหายในห้องเรียนบ่อยๆ</div>
+      </div>
+    </details>
+    <div class="form-group">
+      <label class="field-label">😟 ปัญหาที่กลุ่มของเราเลือก</label>
+      <textarea class="wide" id="p-problem" rows="2" placeholder="เช่น ลืมทำการบ้านบ่อยๆ..."></textarea>
+    </div>
+    <div class="form-group">
+      <label class="field-label">💬 ปัญหานี้กระทบชีวิตของนักเรียนอย่างไร</label>
+      <textarea class="wide" id="p-impact" rows="2" placeholder="เช่น ทำให้โดนหักคะแนน เครียด กังวล..."></textarea>
+    </div>
+    <button class="btn btn-secondary" onclick="saveStep('problem')">💾 บันทึกแล้วไปขั้นต่อไป →</button>
+  </div>
+</section>
+
+<!-- STEP 2: CAUSE with AI (Exploration + Explanation) -->
+<section class="section" id="section-cause">
+  <div class="timer-bar" id="tb-cause" data-total="1500" data-remain="1500"><span class="tb-emoji">🤖</span><div class="tb-wrap"><div class="tb-label">ขั้นที่ 2 — ถาม AI หาสาเหตุ (25 นาที)</div><div class="tb-prog"><div class="tb-fill" id="tbf-cause" style="width:100%"></div></div></div><div class="tb-clock" id="tbc-cause">25:00</div></div>
+  <div class="step-header h-teal"><div class="step-header-icon">🤖</div><div><h2>ขั้นที่ 2 — ใช้ AI ช่วยหาสาเหตุ</h2><p>ลองทักทาย AI ก่อน แล้วถามหาสาเหตุที่แท้จริงของปัญหาที่เลือกไว้</p></div></div>
+
+  <div class="card">
+    <h3 style="font-family:'Kanit',sans-serif;font-size:1rem;color:var(--navy);margin-bottom:12px">🧰 เครื่องมือ AI ที่ใช้ได้</h3>
+    <div class="ai-grid">
+      <div class="ai-card"><div class="ai-icon">💎</div><div class="ai-name">Google Gemini</div><div class="ai-by">by Google</div><button onclick="showAIModal('gemini')">📖 วิธีใช้</button><a href="https://gemini.google.com" target="_blank">🔗 เปิดใช้งาน</a></div>
+      <div class="ai-card"><div class="ai-icon">🎨</div><div class="ai-name">Canva AI</div><div class="ai-by">by Canva</div><button onclick="showAIModal('canva')">📖 วิธีใช้</button><a href="https://www.canva.com" target="_blank">🔗 เปิดใช้งาน</a></div>
+    </div>
+
+    <div class="prompt-box">
+      <div class="pb-title">🧩 วิธีถาม AI ให้ได้คำตอบดี</div>
+      <p style="font-size:.85rem;line-height:1.7;margin-bottom:8px">โครงสร้าง: <strong>บอกปัญหา + ขอสิ่งที่ต้องการ</strong></p>
+      <div class="prompt-sample">"ฉันเป็นนักเรียน ม.1 มีปัญหาคือ <u>[ใส่ปัญหาของกลุ่ม]</u> ช่วยคิดว่าสาเหตุที่แท้จริงอาจเป็นอะไรได้บ้าง บอกมา 2-3 ข้อ แบบเข้าใจง่าย"</div>
+      <button class="btn btn-outline" style="width:auto;padding:8px 14px;font-size:.8rem" onclick="copyPrompt('cause')">📋 คัดลอกตัวอย่างคำสั่งนี้</button>
+    </div>
+
+    <div class="form-group">
+      <label class="field-label">🔎 สาเหตุที่ AI ช่วยคิด (สรุปมา 1-2 ข้อ)</label>
+      <textarea class="wide" id="p-cause" rows="3" placeholder="เช่น อาจเป็นเพราะไม่มีที่จดงานที่ได้รับมอบหมาย..."></textarea>
+    </div>
+    <button class="btn btn-secondary" onclick="saveStep('cause')">💾 บันทึกแล้วไปสร้างผลงาน →</button>
+  </div>
+</section>
+
+<!-- STEP 3: BUILD (Elaboration) -->
+<section class="section" id="section-build">
+  <div class="timer-bar" id="tb-build" data-total="2100" data-remain="2100"><span class="tb-emoji">🛠️</span><div class="tb-wrap"><div class="tb-label">ขั้นที่ 3 — สร้างผลงานด้วย AI (35 นาที)</div><div class="tb-prog"><div class="tb-fill" id="tbf-build" style="width:100%"></div></div></div><div class="tb-clock" id="tbc-build">35:00</div></div>
+  <div class="step-header h-gold"><div class="step-header-icon">🛠️</div><div><h2>ขั้นที่ 3 — ใช้ AI สร้างผลงานแก้ปัญหา</h2><p>ให้ AI ช่วยออกแบบ/เขียน/วาดสิ่งที่ช่วยแก้ปัญหาของกลุ่ม เช่น ตารางเตือนความจำ โปสเตอร์รณรงค์ ข้อความให้กำลังใจ</p></div></div>
+
+  <div class="card">
+    <details class="ex-box">
+      <summary>💡 ตัวอย่างคำสั่ง (Prompt) สำหรับสร้างผลงาน — คลิกดู</summary>
+      <div class="ex-list">
+        <div class="ex-item">📅 "ช่วยออกแบบตารางเตือนความจำการบ้านประจำสัปดาห์ สำหรับนักเรียน ม.1 ที่ลืมทำการบ้านบ่อยๆ ให้จำง่าย น่ารัก"</div>
+        <div class="ex-item">🖼️ "ช่วยวาดภาพโปสเตอร์รณรงค์แยกขยะในห้องเรียน ให้สีสันสดใส น่าสนใจสำหรับนักเรียนมัธยมต้น"</div>
+        <div class="ex-item">📝 "ช่วยเขียนข้อความให้กำลังใจ 3 ประโยค สำหรับนักเรียนที่กังวลเรื่องอ่านหนังสือไม่ทันสอบ"</div>
+        <div class="ex-item">⏰ "ช่วยออกแบบตารางเวลาอ่านหนังสือ 1 สัปดาห์ ที่ทำได้จริงสำหรับนักเรียน ม.1 ที่เล่นมือถือเยอะ"</div>
+      </div>
+    </details>
+
+    <div class="form-group">
+      <label class="field-label">🤖 ใช้ AI ตัวไหนสร้างผลงาน</label>
+      <select id="p-ai-used">
+        <option value="">-- เลือก AI --</option>
+        <option value="Google Gemini">💎 Google Gemini</option>
+        <option value="Canva AI">🎨 Canva AI</option>
+        <option value="อื่นๆ">🤖 อื่นๆ</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="field-label">📝 คำสั่ง (Prompt) ที่ใช้จริง</label>
+      <textarea class="wide" id="p-prompt-used" rows="2" placeholder="พิมพ์คำสั่งที่ใช้ถาม AI จริงๆ (เก็บไว้เป็นหลักฐาน AI Lab Diary)"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="field-label">🎁 ผลงานที่ได้ (อธิบาย หรือวางลิงก์/คำอธิบายภาพ)</label>
+      <textarea class="wide" id="p-artifact" rows="3" placeholder="เช่น ได้ตารางเตือนความจำ 7 วัน พร้อมไอคอนน่ารัก..."></textarea>
+    </div>
+    <button class="btn btn-secondary" onclick="saveStep('build')">💾 บันทึกแล้วไปเตรียมนำเสนอ →</button>
+  </div>
+</section>
+
+<!-- STEP 4: PRESENT (Evaluation) -->
+<section class="section" id="section-present">
+  <div class="timer-bar" id="tb-present" data-total="600" data-remain="600"><span class="tb-emoji">🎤</span><div class="tb-wrap"><div class="tb-label">ขั้นที่ 4 — นำเสนอผลงาน (10 นาที รวม)</div><div class="tb-prog"><div class="tb-fill" id="tbf-present" style="width:100%"></div></div></div><div class="tb-clock" id="tbc-present">10:00</div></div>
+  <div class="step-header h-purple"><div class="step-header-icon">🎤</div><div><h2>ขั้นที่ 4 — นำเสนอผลงาน (1 นาที/กลุ่ม)</h2><p>นำเสนอปัญหา สาเหตุ และผลงานที่สร้างให้เพื่อนฟังสั้นๆ</p></div></div>
+
+  <div class="card">
+    <div style="background:linear-gradient(135deg,var(--navy),var(--blue));border:2px solid var(--gold);border-radius:14px;padding:16px 18px;display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:18px">
+      <div style="text-align:center"><div style="font-size:.72rem;color:rgba(255,255,255,.6);text-transform:uppercase;margin-bottom:4px">⏱ เวลานำเสนอกลุ่มนี้</div><div id="pitch-clock" style="font-family:'Courier New',monospace;font-size:2.2rem;font-weight:900;color:var(--gold2)">01:00</div></div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-teal" style="width:auto" id="pitch-btn" onclick="pitchToggle()">▶ เริ่มจับเวลา</button>
+        <button class="btn btn-outline" style="width:auto" onclick="pitchReset()">↺</button>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Kanit',sans-serif;font-size:.95rem;color:var(--navy);margin-bottom:10px">✅ เช็คลิสต์ก่อนพูด (พูดให้ครบ 4 อย่างนี้)</h3>
+    <label class="checklist-item"><input type="checkbox" class="chk"> 😕 ปัญหาที่เลือกคืออะไร</label>
+    <label class="checklist-item"><input type="checkbox" class="chk"> 🔎 สาเหตุที่พบ (จาก AI) คืออะไร</label>
+    <label class="checklist-item"><input type="checkbox" class="chk"> 🎁 ผลงานที่สร้างช่วยแก้ปัญหาอย่างไร</label>
+    <label class="checklist-item"><input type="checkbox" class="chk"> 💭 สิ่งที่ได้เรียนรู้จากการใช้ AI วันนี้</label>
+
+    <div style="margin-top:18px">
+      <label class="field-label">💭 สิ่งที่ได้เรียนรู้จากกิจกรรมวันนี้ (เขียนสั้นๆ)</label>
+      <textarea class="wide" id="p-reflect" rows="2" placeholder="เช่น รู้ว่า AI ช่วยคิดสาเหตุของปัญหาได้ดี..."></textarea>
+    </div>
+    <button class="btn btn-secondary" style="margin-top:14px" onclick="saveStep('present')">💾 บันทึกแล้วดูสรุปผลงาน →</button>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section class="section" id="section-summary">
+  <div class="step-header h-blue no-print"><div class="step-header-icon">📋</div><div><h2>สรุปผลงานภารกิจของกลุ่ม</h2><p>ตรวจทานผลงานทั้งหมด แล้วพิมพ์/ส่งให้ครูตรวจ (ใช้เป็นหลักฐาน AI Lab Diary)</p></div></div>
+
+  <div class="summary-card section print-active" id="print-summary">
+    <div style="text-align:center;margin-bottom:16px">
+      <div style="font-family:'Kanit',sans-serif;font-size:1.2rem;font-weight:900;color:var(--navy)">🧭 ใบสรุปภารกิจนักสำรวจ AI</div>
+      <div style="font-size:.82rem;color:var(--muted)" id="sum-header">-</div>
+    </div>
+    <div class="summary-row"><div class="sr-label">😟 ปัญหาที่เลือก</div><div class="sr-val" id="sum-problem">-</div></div>
+    <div class="summary-row"><div class="sr-label">💬 ผลกระทบ</div><div class="sr-val" id="sum-impact">-</div></div>
+    <div class="summary-row"><div class="sr-label">🔎 สาเหตุ (จาก AI)</div><div class="sr-val" id="sum-cause">-</div></div>
+    <div class="summary-row"><div class="sr-label">🤖 AI ที่ใช้สร้างผลงาน</div><div class="sr-val" id="sum-ai">-</div></div>
+    <div class="summary-row"><div class="sr-label">📝 คำสั่ง (Prompt) ที่ใช้</div><div class="sr-val" id="sum-prompt">-</div></div>
+    <div class="summary-row"><div class="sr-label">🎁 ผลงานที่ได้</div><div class="sr-val" id="sum-artifact">-</div></div>
+    <div class="summary-row"><div class="sr-label">💭 สิ่งที่ได้เรียนรู้</div><div class="sr-val" id="sum-reflect">-</div></div>
+  </div>
+
+  <div class="card no-print" style="text-align:center">
+    <button class="btn btn-gold" style="width:auto;padding:12px 30px" onclick="window.print()">🖨️ พิมพ์ / บันทึกเป็น PDF ส่งครู</button>
+  </div>
+</section>
+
+</main>
+<div class="toast" id="toast"></div>
+<footer>
+  <div style="font-size:1.2rem;margin-bottom:6px">🧭 ⚡ 🎯</div>
+  จัดทำโดย <strong>นายณัฐธเนศ อ้นจีน</strong><br>
+  <span style="color:#aaa">ครูโรงเรียนชุมชนวัดบางโค (แม่นางวิทย์อุปการี) | วิชาเทคโนโลยีปัญญาประดิษฐ์เพื่อการเรียนรู้ ม.1</span>
+</footer>
+
+<script>
+// ========== STATE ==========
+let student={name:'',group:''};
+let data={problem:'',impact:'',cause:'',aiUsed:'',promptUsed:'',artifact:'',reflect:''};
+let completedSteps={};
+const STEP_ORDER=['problem','cause','build','present'];
+
+function storageKey(){return 'aiExplorer_'+student.name+'_'+student.group;}
+
+function startMission(){
+  const name=document.getElementById('s-name').value.trim();
+  const group=document.getElementById('s-group').value;
+  if(!name){showToast('⚠️ กรุณากรอกชื่อ-นามสกุล');return;}
+  if(!group){showToast('⚠️ กรุณาเลือกกลุ่ม');return;}
+  student={name,group};
+  localStorage.setItem('aiExplorer_current',JSON.stringify(student));
+  const saved=localStorage.getItem(storageKey());
+  if(saved){try{const d=JSON.parse(saved);data={...data,...d.data};completedSteps=d.completed||{};}catch(e){}}
+  showToast(`🧭 ยินดีต้อนรับนักสำรวจ ${name}! (กลุ่ม ${group})`,'success');
+  document.getElementById('progress-banner').style.display='flex';
+  updateProgress();
+  goSection('problem');
+}
+
+function loadFieldsForSection(name){
+  if(name==='problem'){document.getElementById('p-problem').value=data.problem||'';document.getElementById('p-impact').value=data.impact||'';}
+  if(name==='cause'){document.getElementById('p-cause').value=data.cause||'';}
+  if(name==='build'){document.getElementById('p-ai-used').value=data.aiUsed||'';document.getElementById('p-prompt-used').value=data.promptUsed||'';document.getElementById('p-artifact').value=data.artifact||'';}
+  if(name==='present'){document.getElementById('p-reflect').value=data.reflect||'';}
+}
+
+function saveStep(name){
+  if(!student.name){showToast('⚠️ กรุณากรอกชื่อที่หน้าหลักก่อน');goSection('home');return;}
+  if(name==='problem'){data.problem=document.getElementById('p-problem').value.trim();data.impact=document.getElementById('p-impact').value.trim();if(!data.problem){showToast('⚠️ กรุณาเลือก/กรอกปัญหาก่อน');return;}}
+  if(name==='cause'){data.cause=document.getElementById('p-cause').value.trim();if(!data.cause){showToast('⚠️ กรุณากรอกสาเหตุที่ AI ช่วยคิด');return;}}
+  if(name==='build'){data.aiUsed=document.getElementById('p-ai-used').value;data.promptUsed=document.getElementById('p-prompt-used').value.trim();data.artifact=document.getElementById('p-artifact').value.trim();if(!data.artifact){showToast('⚠️ กรุณาอธิบายผลงานที่ได้');return;}}
+  if(name==='present'){data.reflect=document.getElementById('p-reflect').value.trim();}
+  completedSteps[name]=true;
+  localStorage.setItem(storageKey(),JSON.stringify({data,completed:completedSteps}));
+  updateProgress();
+  showToast('✅ บันทึกแล้ว!','success');
+  const idx=STEP_ORDER.indexOf(name);
+  const next=STEP_ORDER[idx+1];
+  setTimeout(()=>goSection(next||'summary'),600);
+}
+
+function updateProgress(){
+  const done=Object.keys(completedSteps).length;
+  const pct=Math.round(done/STEP_ORDER.length*100);
+  document.getElementById('xp-fill').style.width=pct+'%';
+  const badges=['🔰','⭐','🥉','🥈','🏆'];
+  document.getElementById('xp-label').textContent=`${done}/${STEP_ORDER.length} ขั้นตอน ${badges[done]||'🔰'}`;
+}
+
+// ========== NAV ==========
+function goSection(name){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-pill').forEach(p=>p.classList.remove('active'));
+  document.getElementById('section-'+name).classList.add('active');
+  const navMap={home:0,problem:1,cause:2,build:3,present:4,summary:5};
+  document.querySelectorAll('.nav-pill')[navMap[name]]?.classList.add('active');
+  if(['problem','cause','build','present'].includes(name))loadFieldsForSection(name);
+  if(name==='summary')renderSummary();
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(()=>startSectionTimer(name),150);
+}
+
+function renderSummary(){
+  document.getElementById('sum-header').textContent=(student.name||'-')+' | กลุ่ม '+(student.group||'-');
+  document.getElementById('sum-problem').textContent=data.problem||'(ยังไม่ได้กรอก)';
+  document.getElementById('sum-impact').textContent=data.impact||'(ยังไม่ได้กรอก)';
+  document.getElementById('sum-cause').textContent=data.cause||'(ยังไม่ได้กรอก)';
+  document.getElementById('sum-ai').textContent=data.aiUsed||'(ยังไม่ได้กรอก)';
+  document.getElementById('sum-prompt').textContent=data.promptUsed||'(ยังไม่ได้กรอก)';
+  document.getElementById('sum-artifact').textContent=data.artifact||'(ยังไม่ได้กรอก)';
+  document.getElementById('sum-reflect').textContent=data.reflect||'(ยังไม่ได้กรอก)';
+}
+
+// ========== QUICK FILL ==========
+function fillField(id,el){
+  const txt=el.textContent.replace(/^[①-⑧]\s*/,'').trim();
+  document.getElementById(id).value=txt;
+  el.style.borderColor='var(--gold)';
+  setTimeout(()=>el.style.borderColor='',1200);
+  showToast('✅ เติมข้อความให้แล้ว — แก้ไขเพิ่มเติมได้เลย','success');
+}
+
+function copyPrompt(kind){
+  const problem=document.getElementById('p-problem')?.value.trim()||'[ปัญหาของกลุ่ม]';
+  const text=`ฉันเป็นนักเรียน ม.1 มีปัญหาคือ ${problem} ช่วยคิดว่าสาเหตุที่แท้จริงอาจเป็นอะไรได้บ้าง บอกมา 2-3 ข้อ แบบเข้าใจง่าย`;
+  navigator.clipboard?.writeText(text).then(()=>showToast('📋 คัดลอกคำสั่งแล้ว! นำไปวางใน AI ได้เลย','success')).catch(()=>showToast('⚠️ คัดลอกไม่สำเร็จ ลองคัดลอกด้วยตัวเอง'));
+}
+
+// ========== AI MODAL ==========
+const AI_INFO={
+  gemini:{icon:'💎',color:'#1a73e8',name:'Google Gemini',url:'https://gemini.google.com',desc:'AI แชทของ Google ใช้บัญชี Google ของโรงเรียนล็อกอินได้เลย ตอบคำถาม ช่วยคิด ช่วยเขียนได้หลากหลาย',steps:['1. เปิด gemini.google.com แล้วล็อกอินด้วย Google Account','2. พิมพ์คำถาม/ปัญหาลงไปตรงๆ เป็นภาษาไทยได้เลย','3. อ่านคำตอบ แล้วเลือกส่วนที่เป็นประโยชน์ที่สุด','4. ถ้าคำตอบยังไม่ชัด ให้ถามต่อ เช่น "อธิบายง่ายกว่านี้อีกได้ไหม"']},
+  canva:{icon:'🎨',color:'#7c3aed',name:'Canva AI',url:'https://www.canva.com',desc:'เครื่องมือออกแบบที่มี AI ช่วยสร้างภาพ/โปสเตอร์/สไลด์ได้ง่ายๆ เหมาะกับงานที่ต้องมีรูปภาพสวยงาม',steps:['1. เปิด canva.com แล้วสมัคร/ล็อกอินฟรี','2. เลือก "Magic Media" หรือค้นหา "AI image"','3. พิมพ์คำอธิบายภาพที่ต้องการเป็นภาษาไทยหรืออังกฤษ','4. เลือกภาพที่ชอบ แล้วดาวน์โหลด/ใส่ในโปสเตอร์']}
+};
+function showAIModal(key){
+  const info=AI_INFO[key];if(!info)return;
+  document.getElementById('ai-modal')?.remove();
+  const m=document.createElement('div');m.id='ai-modal';m.className='modal-overlay';
+  m.innerHTML=`<div class="modal-box">
+    <div class="modal-head"><div style="display:flex;align-items:center;gap:10px"><span style="font-size:2rem">${info.icon}</span><div><div style="font-family:'Kanit',sans-serif;font-weight:800;color:${info.color};font-size:1.1rem">${info.name}</div></div></div>
+    <p style="margin-top:10px;font-size:.88rem;color:var(--text-dim);line-height:1.6">${info.desc}</p></div>
+    <div class="modal-body">${info.steps.map(s=>`<div class="step-item">${s}</div>`).join('')}</div>
+    <div class="modal-foot"><a href="${info.url}" target="_blank" style="flex:1;text-align:center;background:${info.color};color:#fff;border-radius:10px;padding:11px;font-weight:800;text-decoration:none;font-family:'Kanit',sans-serif">${info.icon} เปิด ${info.name}</a>
+    <button class="btn btn-outline" style="width:auto" onclick="document.getElementById('ai-modal').remove()">ปิด</button></div>
+  </div>`;
+  document.body.appendChild(m);
+  m.addEventListener('click',e=>{if(e.target===m)m.remove();});
+}
+
+// ========== SECTION TIMERS ==========
+const stState={};let stInterval=null;
+function stFmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+function startSectionTimer(id){
+  const bar=document.getElementById('tb-'+id);if(!bar)return;
+  const total=parseInt(bar.dataset.total);
+  const clock=document.getElementById('tbc-'+id),fill=document.getElementById('tbf-'+id);
+  if(stInterval)clearInterval(stInterval);
+  if(stState[id]===undefined)stState[id]=total;
+  if(stState[id]<=0)return;
+  bar.classList.remove('done','urgent');
+  stInterval=setInterval(()=>{
+    if(stState[id]>0)stState[id]--;
+    const r=stState[id];
+    clock.textContent=stFmt(r);
+    fill.style.width=(r/total*100)+'%';
+    if(r===0){clearInterval(stInterval);bar.classList.add('done');}
+    else if(r<60)bar.classList.add('urgent');else bar.classList.remove('urgent');
+  },1000);
+}
+
+// ========== PITCH TIMER ==========
+let pitchSec=60,pitchRunning=false,pitchInterval=null;
+function pitchToggle(){
+  const btn=document.getElementById('pitch-btn');
+  if(pitchRunning){clearInterval(pitchInterval);pitchRunning=false;btn.textContent='▶ ต่อ';}
+  else{pitchRunning=true;btn.textContent='⏸ หยุด';
+    pitchInterval=setInterval(()=>{
+      if(pitchSec>0){pitchSec--;pitchUpdate();}
+      else{clearInterval(pitchInterval);pitchRunning=false;showToast('⏰ หมดเวลานำเสนอ! เชิญกลุ่มถัดไป');const d=document.getElementById('pitch-clock');d.style.color='#ff5252';}
+    },1000);
+  }
+}
+function pitchReset(){clearInterval(pitchInterval);pitchRunning=false;pitchSec=60;pitchUpdate();document.getElementById('pitch-btn').textContent='▶ เริ่มจับเวลา';document.getElementById('pitch-clock').style.color='var(--gold2)';}
+function pitchUpdate(){const d=document.getElementById('pitch-clock');const m=Math.floor(pitchSec/60),s=pitchSec%60;d.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+
+// ========== TOAST ==========
+function showToast(msg,type){const el=document.getElementById('toast');el.textContent=msg;el.className='toast show'+(type==='success'?' success':'');setTimeout(()=>el.className='toast',2400);}
+
+// ========== INIT: restore last session if same browser ==========
+(function init(){
+  try{
+    const cur=localStorage.getItem('aiExplorer_current');
+    if(cur){
+      const s=JSON.parse(cur);
+      document.getElementById('s-name').value=s.name||'';
+      document.getElementById('s-group').value=s.group||'';
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
