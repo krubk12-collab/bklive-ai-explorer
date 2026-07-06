@@ -7,44 +7,44 @@
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&family=Kanit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#0a2540;--blue:#1565c0;--blue2:#2196f3;--sky:#4fc3f7;--teal:#00897b;
-  --gold:#f5a623;--gold2:#ffca42;
-  --card:#ffffff;--card2:#f0f7ff;--bg1:#e8f4fd;--bg2:#dcecfb;
-  --text:#0d1b2a;--text-dim:#3d5570;--muted:#7891a8;--border:#c7dcef;
+  --navy:#0a2540;--blue:#1e88e5;--blue2:#42a5f5;--sky:#4fc3f7;--teal:#00897b;
+  --pink:#ec4899;--pink2:#f9a8d4;--pink-deep:#be185d;
+  --card:#ffffff;--card2:#fdf3f9;--bg1:#e3f2fd;--bg2:#fce4ec;
+  --text:#0d1b2a;--text-dim:#3d5570;--muted:#7891a8;--border:#d8c3dd;
   --success:#2e8b57;--danger:#d84343;
   --shadow:0 2px 16px rgba(10,37,64,0.10);--radius:16px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:'Sarabun',sans-serif;color:var(--text);min-height:100vh;
-  background:linear-gradient(160deg,var(--bg1) 0%,var(--bg2) 50%,#eef8ff 100%);
+  background:linear-gradient(160deg,var(--bg1) 0%,#f3e9f7 50%,var(--bg2) 100%);
   background-attachment:fixed;
 }
 header{
-  background:linear-gradient(180deg,var(--navy),#0d3a63);color:#fff;position:sticky;top:0;z-index:100;
-  border-bottom:3px solid var(--gold);box-shadow:0 4px 20px rgba(10,37,64,.3);
+  background:linear-gradient(120deg,var(--navy) 0%,var(--blue) 55%,#c2185b 130%);color:#fff;position:sticky;top:0;z-index:100;
+  border-bottom:3px solid var(--pink);box-shadow:0 4px 20px rgba(10,37,64,.3);
 }
 .header-inner{max-width:1000px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.logo{font-family:'Kanit',sans-serif;font-weight:800;font-size:1.15rem;display:flex;align-items:center;gap:8px;color:var(--gold2)}
+.logo{font-family:'Kanit',sans-serif;font-weight:800;font-size:1.15rem;display:flex;align-items:center;gap:8px;color:var(--pink2)}
 .nav-pills{display:flex;gap:4px;flex-wrap:wrap}
 .nav-pill{padding:6px 13px;border-radius:20px;font-size:.8rem;font-weight:700;cursor:pointer;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);transition:.2s;font-family:'Sarabun',sans-serif}
 .nav-pill:hover{background:rgba(255,255,255,.18);color:#fff}
-.nav-pill.active{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);font-weight:800;border-color:transparent}
+.nav-pill.active{background:linear-gradient(135deg,var(--pink),var(--pink2));color:var(--navy);font-weight:800;border-color:transparent}
 main{max-width:1000px;margin:0 auto;padding:22px 18px 60px}
 .section{display:none}.section.active{display:block;animation:fadeIn .3s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
 /* HERO */
-.hero{background:linear-gradient(135deg,var(--navy),var(--blue));border:3px solid var(--gold);border-radius:var(--radius);color:#fff;padding:40px 32px;margin-bottom:22px;position:relative;overflow:hidden;box-shadow:0 0 40px rgba(21,101,192,.2)}
-.hero::before{content:'';position:absolute;top:-30px;right:-30px;width:220px;height:220px;background:radial-gradient(circle,rgba(255,202,66,.18),transparent 65%);border-radius:50%}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 55%,#d81b78 120%);border:3px solid var(--pink);border-radius:var(--radius);color:#fff;padding:40px 32px;margin-bottom:22px;position:relative;overflow:hidden;box-shadow:0 0 40px rgba(236,72,153,.25)}
+.hero::before{content:'';position:absolute;top:-30px;right:-30px;width:220px;height:220px;background:radial-gradient(circle,rgba(249,168,212,.25),transparent 65%);border-radius:50%}
 .hero *{color:#fff!important}
 .hero h1{font-family:'Kanit',sans-serif;font-size:1.9rem;font-weight:900;margin-bottom:12px;line-height:1.3}
-.hero h1 span{background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 span{background:linear-gradient(135deg,var(--pink2),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero p{max-width:520px;font-size:.95rem;line-height:1.7;opacity:.92;margin-bottom:22px}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,166,35,.2);border:1px solid rgba(245,166,35,.5);color:var(--gold2)!important;padding:5px 15px;border-radius:20px;font-size:.75rem;font-weight:700;margin-bottom:16px;text-transform:uppercase;letter-spacing:.5px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(236,72,153,.2);border:1px solid rgba(236,72,153,.5);color:var(--pink2)!important;padding:5px 15px;border-radius:20px;font-size:.75rem;font-weight:700;margin-bottom:16px;text-transform:uppercase;letter-spacing:.5px}
 .hero-steps{display:flex;gap:8px;flex-wrap:wrap}
-.hero-step{background:rgba(255,255,255,.1);border:1px solid rgba(245,166,35,.3);border-radius:10px;padding:8px 14px;font-size:.78rem;display:flex;align-items:center;gap:6px}
-.hero-step-num{width:20px;height:20px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:800;color:var(--navy)!important;flex-shrink:0}
+.hero-step{background:rgba(255,255,255,.1);border:1px solid rgba(236,72,153,.3);border-radius:10px;padding:8px 14px;font-size:.78rem;display:flex;align-items:center;gap:6px}
+.hero-step-num{width:20px;height:20px;background:var(--pink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:800;color:var(--navy)!important;flex-shrink:0}
 
 /* CARDS */
 .card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px;margin-bottom:20px}
@@ -58,19 +58,19 @@ main{max-width:1000px;margin:0 auto;padding:22px 18px 60px}
 
 /* BUTTONS */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:11px 22px;border-radius:12px;font-size:.9rem;font-weight:700;font-family:'Sarabun',sans-serif;cursor:pointer;border:none;transition:.2s}
-.btn-primary{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;width:100%;border:2px solid var(--gold)}
+.btn-primary{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;width:100%;border:2px solid var(--pink)}
 .btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(10,37,64,.3)}
 .btn-secondary{background:linear-gradient(135deg,var(--blue),var(--sky));color:#fff}
 .btn-secondary:hover{box-shadow:0 4px 14px rgba(21,101,192,.3)}
 .btn-outline{background:transparent;color:var(--text);border:2px solid var(--border)}
 .btn-outline:hover{border-color:var(--blue);color:var(--blue)}
-.btn-gold{background:linear-gradient(135deg,var(--gold),#d68910);color:#fff}
-.btn-gold:hover{box-shadow:0 4px 14px rgba(245,166,35,.4)}
+.btn-pink{background:linear-gradient(135deg,var(--pink),#be185d);color:#fff}
+.btn-pink:hover{box-shadow:0 4px 14px rgba(236,72,153,.4)}
 .btn-teal{background:linear-gradient(135deg,var(--teal),#00695c);color:#fff}
 .btn:disabled{opacity:.5;cursor:not-allowed}
 
 /* SECTION TIMER */
-.timer-bar{display:flex;align-items:center;gap:14px;background:linear-gradient(90deg,var(--blue),var(--teal));border-radius:20px;padding:12px 20px;margin-bottom:20px;box-shadow:0 4px 16px rgba(21,101,192,.25);border:1px solid rgba(245,166,35,.3)}
+.timer-bar{display:flex;align-items:center;gap:14px;background:linear-gradient(90deg,var(--blue),var(--teal));border-radius:20px;padding:12px 20px;margin-bottom:20px;box-shadow:0 4px 16px rgba(21,101,192,.25);border:1px solid rgba(236,72,153,.3)}
 .timer-bar.urgent{background:linear-gradient(90deg,#c0392b,#e74c3c)}
 .timer-bar.done{background:linear-gradient(90deg,var(--success),#3cb371)}
 .tb-emoji{font-size:1.8rem;flex:0 0 auto}
@@ -81,14 +81,14 @@ main{max-width:1000px;margin:0 auto;padding:22px 18px 60px}
 .tb-clock{font-family:'Courier New',monospace;font-size:1.8rem;font-weight:900;color:#fff;min-width:78px;text-align:right;flex:0 0 auto}
 
 /* STEP HEADER */
-.step-header{border-radius:var(--radius);padding:18px 22px;display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;color:#fff;border:1px solid rgba(245,166,35,.3)}
+.step-header{border-radius:var(--radius);padding:18px 22px;display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;color:#fff;border:1px solid rgba(236,72,153,.3)}
 .step-header *{color:#fff!important}
 .step-header h2{font-family:'Kanit',sans-serif;font-size:1.15rem;font-weight:800;margin-bottom:4px}
 .step-header p{font-size:.85rem;opacity:.92;line-height:1.55}
 .step-header-icon{font-size:1.8rem;flex-shrink:0}
 .h-blue{background:linear-gradient(135deg,var(--navy),var(--blue))}
 .h-teal{background:linear-gradient(135deg,#00695c,var(--teal))}
-.h-gold{background:linear-gradient(135deg,#8a5a00,var(--gold))}
+.h-pink{background:linear-gradient(135deg,#831843,var(--pink))}
 .h-purple{background:linear-gradient(135deg,#4527a0,#7b52c7)}
 
 /* QUICK-FILL EXAMPLES */
@@ -97,7 +97,7 @@ details.ex-box summary{padding:11px 15px;font-size:.85rem;font-weight:700;cursor
 details.ex-box summary::after{content:'▾';margin-left:auto;color:var(--muted)}
 .ex-list{padding:4px 12px 12px;display:grid;gap:6px}
 .ex-item{padding:8px 12px;background:var(--card);border:1px solid var(--border);border-radius:8px;font-size:.85rem;cursor:pointer;transition:.15s;line-height:1.6}
-.ex-item:hover{border-color:var(--gold);background:#fffaf0}
+.ex-item:hover{border-color:var(--pink);background:#fdf2f8}
 
 textarea.wide{width:100%;padding:11px 14px;border:2px solid var(--border);border-radius:10px;font-family:'Sarabun',sans-serif;font-size:.9rem;resize:vertical;background:var(--card2);color:var(--text)}
 textarea.wide:focus{outline:none;border-color:var(--blue)}
@@ -112,9 +112,22 @@ textarea.wide:focus{outline:none;border-color:var(--blue)}
 .ai-card button{font-size:.78rem;background:var(--navy);color:#fff;border:none;border-radius:8px;padding:6px 10px;cursor:pointer;width:100%;margin-bottom:6px;font-family:'Sarabun',sans-serif}
 .ai-card a{font-size:.78rem;background:var(--card2);color:var(--text);border-radius:8px;padding:6px 10px;text-decoration:none;display:block}
 
-.prompt-box{background:linear-gradient(135deg,rgba(21,101,192,.06),rgba(0,137,123,.06));border:2px dashed var(--blue);border-radius:14px;padding:16px 18px;margin-bottom:16px}
+.prompt-box{background:linear-gradient(135deg,rgba(30,136,229,.06),rgba(236,72,153,.06));border:2px dashed var(--blue);border-radius:14px;padding:16px 18px;margin-bottom:16px}
 .prompt-box .pb-title{font-size:.8rem;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
 .prompt-sample{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:.85rem;color:var(--text-dim);margin-bottom:8px;font-style:italic;line-height:1.6}
+.pb-legend{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.pb-tag{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:20px;color:#fff}
+.pb-tag-role{background:#1e88e5}
+.pb-tag-context{background:#00897b}
+.pb-tag-task{background:#ec4899}
+.pb-tag-format{background:#7b52c7}
+.pb-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.pb-grid .pb-field:first-child{grid-column:1/-1}
+.pb-field label{display:block;font-size:.78rem;font-weight:700;color:var(--text-dim);margin-bottom:4px}
+.pb-field input,.pb-field select{width:100%;padding:8px 11px;border:2px solid var(--border);border-radius:8px;font-size:.85rem;font-family:'Sarabun',sans-serif;background:var(--card);color:var(--text)}
+.pb-field input:focus,.pb-field select:focus{outline:none;border-color:var(--pink)}
+.pb-preview-label{font-size:.76rem;color:var(--teal);font-weight:700;margin-bottom:6px}
+.pb-preview{background:var(--card);border:1.5px solid var(--pink);border-radius:10px;padding:12px 14px;font-size:.87rem;color:var(--text);margin-bottom:10px;line-height:1.7;min-height:20px}
 
 /* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(10,37,64,.6);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(3px)}
@@ -127,24 +140,24 @@ textarea.wide:focus{outline:none;border-color:var(--blue)}
 /* PROGRESS/BADGE */
 .progress-banner{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:11px 18px;margin-bottom:18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .xp-bar-wrap{flex:1;min-width:150px;height:8px;background:rgba(0,0,0,.08);border-radius:4px;overflow:hidden}
-.xp-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .5s}
+.xp-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--pink),var(--pink2));transition:width .5s}
 
 /* SUMMARY / PRINT */
-.summary-card{background:var(--card);border:2px solid var(--gold);border-radius:var(--radius);padding:22px;margin-bottom:18px}
+.summary-card{background:var(--card);border:2px solid var(--pink);border-radius:var(--radius);padding:22px;margin-bottom:18px}
 .summary-row{margin-bottom:12px;padding-bottom:12px;border-bottom:1px dashed var(--border)}
 .summary-row:last-child{border-bottom:none}
 .summary-row .sr-label{font-size:.75rem;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
 .summary-row .sr-val{font-size:.92rem;color:var(--text)}
 .checklist-item{display:flex;align-items:flex-start;gap:8px;font-size:.87rem;padding:6px 0;color:var(--text)}
-.toast{position:fixed;bottom:22px;right:22px;background:var(--navy);color:#fff;padding:11px 18px;border-radius:12px;font-size:.86rem;font-weight:600;box-shadow:0 8px 26px rgba(10,37,64,.3);z-index:999;transform:translateY(100px);opacity:0;transition:.3s;border:1px solid var(--gold)}
+.toast{position:fixed;bottom:22px;right:22px;background:var(--navy);color:#fff;padding:11px 18px;border-radius:12px;font-size:.86rem;font-weight:600;box-shadow:0 8px 26px rgba(10,37,64,.3);z-index:999;transform:translateY(100px);opacity:0;transition:.3s;border:1px solid var(--pink)}
 .toast.show{transform:translateY(0);opacity:1}
 .toast.success{background:#1a5c35}
 
 .section-title{font-family:'Kanit',sans-serif;font-size:1.25rem;font-weight:800;color:var(--navy);margin-bottom:5px}
 .section-sub{color:var(--text-dim);font-size:.86rem;margin-bottom:18px}
 
-footer{background:linear-gradient(180deg,#0d3a63,var(--navy));color:#ccc;text-align:center;padding:26px 20px;font-size:.8rem;line-height:1.7;border-top:3px solid var(--gold)}
-footer strong{color:var(--gold2)}
+footer{background:linear-gradient(180deg,#0d3a63,var(--navy));color:#ccc;text-align:center;padding:26px 20px;font-size:.8rem;line-height:1.7;border-top:3px solid var(--pink)}
+footer strong{color:var(--pink2)}
 
 @media print{
   header,.timer-bar,.nav-pills,.btn,footer,.no-print{display:none!important}
@@ -157,6 +170,8 @@ footer strong{color:var(--gold2)}
 @media(max-width:640px){
   .hero{padding:26px 18px}.hero h1{font-size:1.4rem}
   .ai-grid{grid-template-columns:1fr}
+  .pb-grid{grid-template-columns:1fr}
+  .pb-grid .pb-field:first-child{grid-column:auto}
   .nav-pills{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .nav-pills::-webkit-scrollbar{display:none}
   .nav-pill{white-space:nowrap;flex-shrink:0}
@@ -183,7 +198,7 @@ footer strong{color:var(--gold2)}
 <div class="progress-banner" id="progress-banner" style="display:none">
   <span style="font-size:.8rem;color:var(--muted)">⚡ ความคืบหน้า</span>
   <div class="xp-bar-wrap"><div class="xp-bar-fill" id="xp-fill" style="width:0%"></div></div>
-  <span id="xp-label" style="font-size:.85rem;font-weight:800;color:var(--gold)">0/5 ขั้นตอน 🔰</span>
+  <span id="xp-label" style="font-size:.85rem;font-weight:800;color:var(--pink)">0/5 ขั้นตอน 🔰</span>
 </div>
 
 <!-- HOME -->
@@ -270,10 +285,28 @@ footer strong{color:var(--gold2)}
     </div>
 
     <div class="prompt-box">
-      <div class="pb-title">🧩 วิธีถาม AI ให้ได้คำตอบดี</div>
-      <p style="font-size:.85rem;line-height:1.7;margin-bottom:8px">โครงสร้าง: <strong>บอกปัญหา + ขอสิ่งที่ต้องการ</strong></p>
-      <div class="prompt-sample">"ฉันเป็นนักเรียน ม.1 มีปัญหาคือ <u>[ใส่ปัญหาของกลุ่ม]</u> ช่วยคิดว่าสาเหตุที่แท้จริงอาจเป็นอะไรได้บ้าง บอกมา 2-3 ข้อ แบบเข้าใจง่าย"</div>
-      <button class="btn btn-outline" style="width:auto;padding:8px 14px;font-size:.8rem" onclick="copyPrompt('cause')">📋 คัดลอกตัวอย่างคำสั่งนี้</button>
+      <div class="pb-title">🧩 ฝึกเขียน Prompt สั่งงาน AI</div>
+      <p style="font-size:.85rem;line-height:1.7;margin-bottom:10px">Prompt ที่ดีต้องมี 4 ส่วนนี้ — ลองกรอกแต่ละช่อง แล้วดู Prompt ที่ประกอบขึ้นด้านล่าง</p>
+      <div class="pb-legend">
+        <span class="pb-tag pb-tag-role">👤 บทบาท (Role)</span>
+        <span class="pb-tag pb-tag-context">📎 บริบท (Context)</span>
+        <span class="pb-tag pb-tag-task">🎯 สิ่งที่ต้องการ (Task)</span>
+        <span class="pb-tag pb-tag-format">📐 รูปแบบคำตอบ (Format)</span>
+      </div>
+      <div class="pb-grid">
+        <div class="pb-field"><label>👤 บทบาทของเรา</label><input type="text" id="c-role" value="ฉันเป็นนักเรียน ม.1" oninput="updatePromptPreview('c')"></div>
+        <div class="pb-field"><label>🎯 อยากให้ AI ช่วยอะไร</label><input type="text" id="c-ask" placeholder="เช่น ช่วยคิดสาเหตุที่แท้จริง 2-3 ข้อ" oninput="updatePromptPreview('c')"></div>
+        <div class="pb-field"><label>📐 อยากได้คำตอบแบบไหน</label>
+          <select id="c-format" onchange="updatePromptPreview('c')">
+            <option value="บอกเป็นข้อๆ สั้นๆ เข้าใจง่าย">บอกเป็นข้อๆ สั้นๆ</option>
+            <option value="อธิบายเหมือนคุยกับเพื่อน">อธิบายเหมือนคุยกับเพื่อน</option>
+            <option value="สรุปไม่เกิน 3 บรรทัด">สรุปไม่เกิน 3 บรรทัด</option>
+          </select>
+        </div>
+      </div>
+      <div class="pb-preview-label">📎 บริบท (ดึงจากปัญหาที่เลือกไว้อัตโนมัติ): <span id="c-context-show">-</span></div>
+      <div class="pb-preview" id="c-preview">กรอกข้อมูลด้านบนเพื่อดู Prompt ที่ประกอบขึ้น...</div>
+      <button class="btn btn-outline" style="width:auto;padding:8px 14px;font-size:.8rem" onclick="copyBuiltPrompt('c')">📋 คัดลอก Prompt นี้ไปใช้กับ AI</button>
     </div>
 
     <div class="form-group">
@@ -287,7 +320,7 @@ footer strong{color:var(--gold2)}
 <!-- STEP 3: BUILD (Elaboration) -->
 <section class="section" id="section-build">
   <div class="timer-bar" id="tb-build" data-total="2100" data-remain="2100"><span class="tb-emoji">🛠️</span><div class="tb-wrap"><div class="tb-label">ขั้นที่ 3 — สร้างผลงานด้วย AI (35 นาที)</div><div class="tb-prog"><div class="tb-fill" id="tbf-build" style="width:100%"></div></div></div><div class="tb-clock" id="tbc-build">35:00</div></div>
-  <div class="step-header h-gold"><div class="step-header-icon">🛠️</div><div><h2>ขั้นที่ 3 — ใช้ AI สร้างผลงานแก้ปัญหา</h2><p>ให้ AI ช่วยออกแบบ/เขียน/วาดสิ่งที่ช่วยแก้ปัญหาของกลุ่ม เช่น ตารางเตือนความจำ โปสเตอร์รณรงค์ ข้อความให้กำลังใจ</p></div></div>
+  <div class="step-header h-pink"><div class="step-header-icon">🛠️</div><div><h2>ขั้นที่ 3 — ใช้ AI สร้างผลงานแก้ปัญหา</h2><p>ให้ AI ช่วยออกแบบ/เขียน/วาดสิ่งที่ช่วยแก้ปัญหาของกลุ่ม เช่น ตารางเตือนความจำ โปสเตอร์รณรงค์ ข้อความให้กำลังใจ</p></div></div>
 
   <div class="card">
     <details class="ex-box">
@@ -299,6 +332,31 @@ footer strong{color:var(--gold2)}
         <div class="ex-item">⏰ "ช่วยออกแบบตารางเวลาอ่านหนังสือ 1 สัปดาห์ ที่ทำได้จริงสำหรับนักเรียน ม.1 ที่เล่นมือถือเยอะ"</div>
       </div>
     </details>
+
+    <div class="prompt-box">
+      <div class="pb-title">🧩 ประกอบ Prompt สำหรับสร้างผลงาน</div>
+      <p style="font-size:.85rem;line-height:1.7;margin-bottom:10px">ใช้สูตรเดิม (บทบาท + บริบท + สิ่งที่ต้องการ + รูปแบบ) แต่คราวนี้ขอให้ AI ช่วย "สร้าง" ผลงานแทน</p>
+      <div class="pb-legend">
+        <span class="pb-tag pb-tag-role">👤 บทบาท</span>
+        <span class="pb-tag pb-tag-context">📎 บริบท</span>
+        <span class="pb-tag pb-tag-task">🎯 สิ่งที่ต้องการ</span>
+        <span class="pb-tag pb-tag-format">📐 รูปแบบ</span>
+      </div>
+      <div class="pb-grid">
+        <div class="pb-field"><label>👤 บทบาทของเรา</label><input type="text" id="b-role" value="ฉันเป็นนักเรียน ม.1" oninput="updatePromptPreview('b')"></div>
+        <div class="pb-field"><label>🎯 อยากให้ AI สร้างอะไร</label><input type="text" id="b-ask" placeholder="เช่น ช่วยออกแบบตารางเตือนความจำการบ้าน" oninput="updatePromptPreview('b')"></div>
+        <div class="pb-field"><label>📐 อยากได้แบบไหน</label>
+          <select id="b-format" onchange="updatePromptPreview('b')">
+            <option value="ให้น่ารัก สีสันสดใส">ให้น่ารัก สีสันสดใส</option>
+            <option value="ให้เรียบง่าย อ่านง่าย">ให้เรียบง่าย อ่านง่าย</option>
+            <option value="ให้สั้นกระชับ ใช้ได้จริง">ให้สั้นกระชับ ใช้ได้จริง</option>
+          </select>
+        </div>
+      </div>
+      <div class="pb-preview-label">📎 บริบท (ดึงจากปัญหา+สาเหตุที่บันทึกไว้อัตโนมัติ): <span id="b-context-show">-</span></div>
+      <div class="pb-preview" id="b-preview">กรอกข้อมูลด้านบนเพื่อดู Prompt ที่ประกอบขึ้น...</div>
+      <button class="btn btn-outline" style="width:auto;padding:8px 14px;font-size:.8rem" onclick="copyBuiltPrompt('b')">📋 คัดลอก Prompt นี้ไปใช้กับ AI</button>
+    </div>
 
     <div class="form-group">
       <label class="field-label">🤖 ใช้ AI ตัวไหนสร้างผลงาน</label>
@@ -327,8 +385,8 @@ footer strong{color:var(--gold2)}
   <div class="step-header h-purple"><div class="step-header-icon">🎤</div><div><h2>ขั้นที่ 4 — นำเสนอผลงาน (1 นาที/กลุ่ม)</h2><p>นำเสนอปัญหา สาเหตุ และผลงานที่สร้างให้เพื่อนฟังสั้นๆ</p></div></div>
 
   <div class="card">
-    <div style="background:linear-gradient(135deg,var(--navy),var(--blue));border:2px solid var(--gold);border-radius:14px;padding:16px 18px;display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:18px">
-      <div style="text-align:center"><div style="font-size:.72rem;color:rgba(255,255,255,.6);text-transform:uppercase;margin-bottom:4px">⏱ เวลานำเสนอกลุ่มนี้</div><div id="pitch-clock" style="font-family:'Courier New',monospace;font-size:2.2rem;font-weight:900;color:var(--gold2)">01:00</div></div>
+    <div style="background:linear-gradient(135deg,var(--navy),var(--blue));border:2px solid var(--pink);border-radius:14px;padding:16px 18px;display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:18px">
+      <div style="text-align:center"><div style="font-size:.72rem;color:rgba(255,255,255,.6);text-transform:uppercase;margin-bottom:4px">⏱ เวลานำเสนอกลุ่มนี้</div><div id="pitch-clock" style="font-family:'Courier New',monospace;font-size:2.2rem;font-weight:900;color:var(--pink2)">01:00</div></div>
       <div style="display:flex;gap:8px">
         <button class="btn btn-teal" style="width:auto" id="pitch-btn" onclick="pitchToggle()">▶ เริ่มจับเวลา</button>
         <button class="btn btn-outline" style="width:auto" onclick="pitchReset()">↺</button>
@@ -361,14 +419,16 @@ footer strong{color:var(--gold2)}
     <div class="summary-row"><div class="sr-label">😟 ปัญหาที่เลือก</div><div class="sr-val" id="sum-problem">-</div></div>
     <div class="summary-row"><div class="sr-label">💬 ผลกระทบ</div><div class="sr-val" id="sum-impact">-</div></div>
     <div class="summary-row"><div class="sr-label">🔎 สาเหตุ (จาก AI)</div><div class="sr-val" id="sum-cause">-</div></div>
+    <div class="summary-row"><div class="sr-label">🧩 Prompt ที่ใช้หาสาเหตุ</div><div class="sr-val" id="sum-cause-prompt">-</div></div>
     <div class="summary-row"><div class="sr-label">🤖 AI ที่ใช้สร้างผลงาน</div><div class="sr-val" id="sum-ai">-</div></div>
-    <div class="summary-row"><div class="sr-label">📝 คำสั่ง (Prompt) ที่ใช้</div><div class="sr-val" id="sum-prompt">-</div></div>
+    <div class="summary-row"><div class="sr-label">🧩 Prompt ที่ใช้สร้างผลงาน</div><div class="sr-val" id="sum-build-prompt">-</div></div>
+    <div class="summary-row"><div class="sr-label">📝 คำสั่งจริงที่พิมพ์</div><div class="sr-val" id="sum-prompt">-</div></div>
     <div class="summary-row"><div class="sr-label">🎁 ผลงานที่ได้</div><div class="sr-val" id="sum-artifact">-</div></div>
     <div class="summary-row"><div class="sr-label">💭 สิ่งที่ได้เรียนรู้</div><div class="sr-val" id="sum-reflect">-</div></div>
   </div>
 
   <div class="card no-print" style="text-align:center">
-    <button class="btn btn-gold" style="width:auto;padding:12px 30px" onclick="window.print()">🖨️ พิมพ์ / บันทึกเป็น PDF ส่งครู</button>
+    <button class="btn btn-pink" style="width:auto;padding:12px 30px" onclick="window.print()">🖨️ พิมพ์ / บันทึกเป็น PDF ส่งครู</button>
   </div>
 </section>
 
@@ -382,10 +442,27 @@ footer strong{color:var(--gold2)}
 
 <script>
 // ========== STATE ==========
+const GAS_URL='https://script.google.com/macros/s/AKfycbyo0Kdx0lSJq1oczuI_JFJX_p39eANePY_ZksSlevpwaP6gvLTvDERVE-8Cd7fLkm0W/exec';
 let student={name:'',group:''};
-let data={problem:'',impact:'',cause:'',aiUsed:'',promptUsed:'',artifact:'',reflect:''};
+let data={problem:'',impact:'',cause:'',causePrompt:'',aiUsed:'',buildPrompt:'',promptUsed:'',artifact:'',reflect:''};
 let completedSteps={};
 const STEP_ORDER=['problem','cause','build','present'];
+
+async function gasPost(payload){
+  try{
+    const res=await fetch(GAS_URL,{method:'POST',body:JSON.stringify(payload)});
+    if(res.ok)return await res.json();
+    return{status:'error'};
+  }catch(e){
+    try{await fetch(GAS_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)});return{status:'ok',fallback:true};}
+    catch(e2){return{status:'error',message:e2.message};}
+  }
+}
+
+function syncToSheet(){
+  if(!student.name)return;
+  gasPost({action:'saveMission',name:student.name,group:student.group,...data});
+}
 
 function storageKey(){return 'aiExplorer_'+student.name+'_'+student.group;}
 
@@ -406,21 +483,22 @@ function startMission(){
 
 function loadFieldsForSection(name){
   if(name==='problem'){document.getElementById('p-problem').value=data.problem||'';document.getElementById('p-impact').value=data.impact||'';}
-  if(name==='cause'){document.getElementById('p-cause').value=data.cause||'';}
-  if(name==='build'){document.getElementById('p-ai-used').value=data.aiUsed||'';document.getElementById('p-prompt-used').value=data.promptUsed||'';document.getElementById('p-artifact').value=data.artifact||'';}
+  if(name==='cause'){document.getElementById('p-cause').value=data.cause||'';updatePromptPreview('c');}
+  if(name==='build'){document.getElementById('p-ai-used').value=data.aiUsed||'';document.getElementById('p-prompt-used').value=data.promptUsed||'';document.getElementById('p-artifact').value=data.artifact||'';updatePromptPreview('b');}
   if(name==='present'){document.getElementById('p-reflect').value=data.reflect||'';}
 }
 
 function saveStep(name){
   if(!student.name){showToast('⚠️ กรุณากรอกชื่อที่หน้าหลักก่อน');goSection('home');return;}
   if(name==='problem'){data.problem=document.getElementById('p-problem').value.trim();data.impact=document.getElementById('p-impact').value.trim();if(!data.problem){showToast('⚠️ กรุณาเลือก/กรอกปัญหาก่อน');return;}}
-  if(name==='cause'){data.cause=document.getElementById('p-cause').value.trim();if(!data.cause){showToast('⚠️ กรุณากรอกสาเหตุที่ AI ช่วยคิด');return;}}
-  if(name==='build'){data.aiUsed=document.getElementById('p-ai-used').value;data.promptUsed=document.getElementById('p-prompt-used').value.trim();data.artifact=document.getElementById('p-artifact').value.trim();if(!data.artifact){showToast('⚠️ กรุณาอธิบายผลงานที่ได้');return;}}
+  if(name==='cause'){data.cause=document.getElementById('p-cause').value.trim();data.causePrompt=document.getElementById('c-preview')?.textContent.trim()||'';if(!data.cause){showToast('⚠️ กรุณากรอกสาเหตุที่ AI ช่วยคิด');return;}}
+  if(name==='build'){data.aiUsed=document.getElementById('p-ai-used').value;data.buildPrompt=document.getElementById('b-preview')?.textContent.trim()||'';data.promptUsed=document.getElementById('p-prompt-used').value.trim();data.artifact=document.getElementById('p-artifact').value.trim();if(!data.artifact){showToast('⚠️ กรุณาอธิบายผลงานที่ได้');return;}}
   if(name==='present'){data.reflect=document.getElementById('p-reflect').value.trim();}
   completedSteps[name]=true;
   localStorage.setItem(storageKey(),JSON.stringify({data,completed:completedSteps}));
   updateProgress();
-  showToast('✅ บันทึกแล้ว!','success');
+  syncToSheet();
+  showToast('✅ บันทึกแล้ว! (ซิงก์ขึ้น Google Sheets ให้ครูแล้ว)','success');
   const idx=STEP_ORDER.indexOf(name);
   const next=STEP_ORDER[idx+1];
   setTimeout(()=>goSection(next||'summary'),600);
@@ -452,7 +530,9 @@ function renderSummary(){
   document.getElementById('sum-problem').textContent=data.problem||'(ยังไม่ได้กรอก)';
   document.getElementById('sum-impact').textContent=data.impact||'(ยังไม่ได้กรอก)';
   document.getElementById('sum-cause').textContent=data.cause||'(ยังไม่ได้กรอก)';
+  document.getElementById('sum-cause-prompt').textContent=data.causePrompt||'(ยังไม่ได้กรอก)';
   document.getElementById('sum-ai').textContent=data.aiUsed||'(ยังไม่ได้กรอก)';
+  document.getElementById('sum-build-prompt').textContent=data.buildPrompt||'(ยังไม่ได้กรอก)';
   document.getElementById('sum-prompt').textContent=data.promptUsed||'(ยังไม่ได้กรอก)';
   document.getElementById('sum-artifact').textContent=data.artifact||'(ยังไม่ได้กรอก)';
   document.getElementById('sum-reflect').textContent=data.reflect||'(ยังไม่ได้กรอก)';
@@ -462,15 +542,37 @@ function renderSummary(){
 function fillField(id,el){
   const txt=el.textContent.replace(/^[①-⑧]\s*/,'').trim();
   document.getElementById(id).value=txt;
-  el.style.borderColor='var(--gold)';
+  el.style.borderColor='var(--pink)';
   setTimeout(()=>el.style.borderColor='',1200);
   showToast('✅ เติมข้อความให้แล้ว — แก้ไขเพิ่มเติมได้เลย','success');
 }
 
-function copyPrompt(kind){
-  const problem=document.getElementById('p-problem')?.value.trim()||'[ปัญหาของกลุ่ม]';
-  const text=`ฉันเป็นนักเรียน ม.1 มีปัญหาคือ ${problem} ช่วยคิดว่าสาเหตุที่แท้จริงอาจเป็นอะไรได้บ้าง บอกมา 2-3 ข้อ แบบเข้าใจง่าย`;
-  navigator.clipboard?.writeText(text).then(()=>showToast('📋 คัดลอกคำสั่งแล้ว! นำไปวางใน AI ได้เลย','success')).catch(()=>showToast('⚠️ คัดลอกไม่สำเร็จ ลองคัดลอกด้วยตัวเอง'));
+// ========== PROMPT BUILDER (Role + Context + Task + Format) ==========
+function updatePromptPreview(prefix){
+  const role=document.getElementById(prefix+'-role')?.value.trim()||'';
+  const ask=document.getElementById(prefix+'-ask')?.value.trim()||'';
+  const format=document.getElementById(prefix+'-format')?.value||'';
+  let context='';
+  if(prefix==='c'){
+    context=data.problem||document.getElementById('p-problem')?.value.trim()||'';
+    document.getElementById('c-context-show').textContent=context||'(ยังไม่ได้เลือกปัญหา — กลับไปขั้นที่ 1 ก่อน)';
+  }else{
+    const problem=data.problem||'';
+    const cause=data.cause||document.getElementById('p-cause')?.value.trim()||'';
+    context=[problem&&('ปัญหาคือ '+problem),cause&&('สาเหตุคือ '+cause)].filter(Boolean).join(' ');
+    document.getElementById('b-context-show').textContent=context||'(ยังไม่ได้กรอกปัญหา/สาเหตุ — กลับไปขั้นก่อนหน้า)';
+  }
+  const preview=document.getElementById(prefix+'-preview');
+  if(!ask){preview.textContent='กรอกช่อง "อยากให้ AI ช่วยอะไร" เพื่อดู Prompt ที่ประกอบขึ้น...';return;}
+  const contextPart=prefix==='c'?(context?`มีปัญหาคือ ${context}`:''):(context||'');
+  const text=`${role}${role?'. ':''}${contextPart}${contextPart?'. ':''}${ask} โดยตอบแบบ${format}`;
+  preview.textContent=text;
+}
+
+function copyBuiltPrompt(prefix){
+  const text=document.getElementById(prefix+'-preview')?.textContent.trim();
+  if(!text||text.startsWith('กรอก')){showToast('⚠️ กรุณากรอก Prompt ให้ครบก่อนคัดลอก');return;}
+  navigator.clipboard?.writeText(text).then(()=>showToast('📋 คัดลอก Prompt แล้ว! นำไปวางใน AI ได้เลย','success')).catch(()=>showToast('⚠️ คัดลอกไม่สำเร็จ ลองคัดลอกด้วยตัวเอง'));
 }
 
 // ========== AI MODAL ==========
@@ -526,7 +628,7 @@ function pitchToggle(){
     },1000);
   }
 }
-function pitchReset(){clearInterval(pitchInterval);pitchRunning=false;pitchSec=60;pitchUpdate();document.getElementById('pitch-btn').textContent='▶ เริ่มจับเวลา';document.getElementById('pitch-clock').style.color='var(--gold2)';}
+function pitchReset(){clearInterval(pitchInterval);pitchRunning=false;pitchSec=60;pitchUpdate();document.getElementById('pitch-btn').textContent='▶ เริ่มจับเวลา';document.getElementById('pitch-clock').style.color='var(--pink2)';}
 function pitchUpdate(){const d=document.getElementById('pitch-clock');const m=Math.floor(pitchSec/60),s=pitchSec%60;d.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
 
 // ========== TOAST ==========
